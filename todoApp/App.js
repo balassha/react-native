@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { StyleSheet, TouchableOpacity, View,FlatList } from 'react-native';
 import Header from './components/header';
 import ToDoItem from './components/todoItems';
+import AddToDo from './components/addTodo';
 
 export default function App() {
   const [data,setData] = useState([
@@ -11,6 +12,11 @@ export default function App() {
   ])
   const pressHandler=(key)=>{
     let d = data.filter(i=>{return i.key != key});
+    setData(d);
+  }
+  const buttonPressHandler=(text)=>{
+    let newKey = Number(data[data.length-1].key)+1+'';
+    let d = [...data,{text:text,key:newKey}]
     setData(d);
   }
   return (
@@ -24,6 +30,7 @@ export default function App() {
                       <ToDoItem item={item} pressHandler={pressHandler} />
                   </TouchableOpacity>
                 )}/>
+              <AddToDo buttonPressHandler={buttonPressHandler} />
         </View>
     </View>
   );

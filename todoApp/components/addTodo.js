@@ -7,7 +7,7 @@ export default function AddTodo({buttonPressHandler}){
         updateInput(val);
     }
     return (
-        <View>
+        <View style={styles.view}>
             <TextInput 
                 placeholder="Enter a new To Do Item"
                 onChangeText={(val)=>inputHandler(val)}
@@ -23,8 +23,8 @@ export default function AddTodo({buttonPressHandler}){
 
 const styles = StyleSheet.create({
     addTodo:{
-        borderStyle:'dashed',
-        borderWidth:1,
+        borderStyle:'line',
+        borderWidth:2,
         borderRadius:10,
         padding:10,
         margin:10,
@@ -34,5 +34,10 @@ const styles = StyleSheet.create({
         width:200,
         borderRadius:10,
         marginLeft:12
+    },
+    view:{
+        flex:1,
+        marginBottom:20,
+        marginLeft:15
     }
 });

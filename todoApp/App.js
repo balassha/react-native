@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { StyleSheet, TouchableOpacity, View,FlatList } from 'react-native';
+import { StyleSheet, TouchableOpacity, View,FlatList, Alert } from 'react-native';
 import Header from './components/header';
 import ToDoItem from './components/todoItems';
 import AddToDo from './components/addTodo';
@@ -15,14 +15,14 @@ export default function App() {
     setData(d);
   }
   const buttonPressHandler=(text)=>{
-    let newKey = Number(data[data.length-1].key)+1+'';
-    let d = [...data,{text:text,key:newKey}]
-    setData(d);
+      let newKey = Number(data[data.length-1].key)+1+'';
+      let d = [...data,{text:text,key:newKey}]
+      setData(d);  
   }
   return (
     <View style={styles.container}>
       <Header />
-        <View>
+        <View style={styles.list}>
             <FlatList 
                 data={data}
                 renderItem={({item})=>(
@@ -43,4 +43,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  list:{
+    flex:0.7
+  }
 });
